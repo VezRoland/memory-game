@@ -6,7 +6,7 @@
   --text: hsl(0 0% 35%);
   --shadow: hsl(0 0% 90%);
   --secondary: hsl(250 50% 70%);
-  --highlight: hsl(250 50% 75%);
+  --highlight: hsl(250 50% 77%);
 }
 
 * {
@@ -21,6 +21,7 @@ body {
   place-items: center;
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
+  color: var(--text);
   background: var(--primary);
 }
 
@@ -45,7 +46,6 @@ input {
   padding-block: 0.75em;
   border: 0.1em solid var(--text);
   border-radius: 0.25em;
-  color: var(--text);
   cursor: pointer;
 }
 
@@ -65,8 +65,44 @@ button {
   cursor: pointer;
 }
 
+button:focus,
 button:hover {
+  outline: none;
   background: var(--highlight);
+}
+
+details {
+  border: 0.1em solid var(--text);
+  border-radius: 0.25em;
+  overflow: clip;
+  cursor: pointer;
+}
+
+details:has(:focus) {
+  outline: 0.1em solid var(--secondary);
+  border-color: var(--secondary);
+}
+
+details summary {
+  padding-inline: 1em;
+  padding-block: 0.75em;
+  list-style: none;
+  background: var(--primary);
+}
+
+summary:focus {
+  outline: none;
+}
+
+details ul {
+  padding-inline: 1em;
+  padding-block: 0.75em;
+  border-top: 0.1em solid var(--text);
+  list-style: none;
+}
+
+b {
+  color: var(--secondary);
 }
 
 .cards {

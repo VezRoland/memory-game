@@ -2,6 +2,7 @@ class Cards {
   cards = []
   showed = []
   locked = []
+  stats = { flips: 0, start: null, end: null }
 
   constructor(root, content, callback) {
     this.root = root
@@ -19,6 +20,7 @@ class Cards {
 
   show(elem) {
     if (elem.position === 1 || this.showed.length === 2) return
+    this.stats.flips += 1
     elem.setPosition(1)
     this.showed = [ ...this.showed, elem ]
     if (this.showed.length === 2) {
@@ -38,10 +40,14 @@ class Cards {
       this.locked = [ ...this.locked, elem ]
     })
     this.showed = []
-    if (this.locked.length === this.cards.length) this.callback(this)
+    if (this.locked.length === this.cards.length) {
+      this.stats.end = new Date()
+      this.callback(this)
+    }
   }
 
   render() {
+    this.stats.start = new Date()
     this.root.appendChild(this.element)
   }
 
