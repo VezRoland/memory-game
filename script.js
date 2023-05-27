@@ -23,15 +23,9 @@ function generateContent(pairs) {
   }
 
   const doubledList = [ ...baseList, ...baseList ]
-  let shuffledList = []
+  doubledList.sort(() => Math.random() - 1)
 
-  while (shuffledList.length < pairs * 2) {
-    const randIndex = rand(0, doubledList.length - 1)
-    shuffledList = [ ...shuffledList, doubledList[randIndex] ]
-    doubledList.splice(randIndex, 1)
-  }
-
-  return shuffledList
+  return doubledList
 }
 
 function createStats({ flips, start, end }) {
